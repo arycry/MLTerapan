@@ -218,7 +218,7 @@ Berikut kekurangan Gradient Boosting
 berikut kode untuk model Gradient Boosting:
 
 ```sh
-gbr = GradientBoostingRegressor(n_estimators=200, learning_rate=0.1, random_state=1)
+gbr = GradientBoostingRegressor(n_estimators=200, learning_rate=0.1, random_state=123)
 ```
 
 Setelah dilakukan modeling, maka dilakukan evaluasi model mana yang memiliki kinerja paling baik. 
