@@ -255,7 +255,7 @@ Sehingga bisa disimpulkan bahwa model yang cocok dengan projek prediksi penjuala
 - geeksforgeeks, "What are the Advantages and Disadvantages of Random Forest?", 2024, Retrieved from: https://www.geeksforgeeks.org/what-are-the-advantages-and-disadvantages-of-random-forest/
 - Ambika, "XGBoost Algorithm in Machine Learning", 2023, Retrieved from: https://medium.com/@ambika199820/xgboost-algorithm-in-machine-learning-2391edb101ce
 - Piyush Kashyap, "A Comprehensive Guide to Gradient Boosting and Regression in Machine Learning: Step-by-Step Intuition and Example", 2024, Retrieved From: https://medium.com/@piyushkashyap045/a-comprehensive-guide-to-gradient-boosting-and-regression-in-machine-learning-step-by-step-faa17fbd0e2c#:~:text=Pros%20and%20Cons%20of%20Gradient%20Boosting,-Pros%3A&text=High%20accuracy%3A%20Often%20outperforms%20other,Boosting%20can%20model%20complex%20relationships.
-- Raghav Agrawal, "https://www.analyticsvidhya.com/blog/2021/05/know-the-best-evaluation-metrics-for-your-regression-model/#h-mean-squared-error-mse", 2024, Retrieved from: https://www.analyticsvidhya.com/blog/2021/05/know-the-best-evaluation-metrics-for-your-regression-model/#h-mean-squared-error-mse
+- Raghav Agrawal, "Know The Best Evaluation Metrics for Your Regression Model !", 2024, Retrieved from: https://www.analyticsvidhya.com/blog/2021/05/know-the-best-evaluation-metrics-for-your-regression-model/#h-mean-squared-error-mse
 
 
 
