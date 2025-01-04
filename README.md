@@ -218,7 +218,10 @@ Terlihat bahwa masing-masing fitur memiliki relasi yang cukup kuat dengan 'selli
 
 ## Data Transformation
 Data Transformation merupakan tahap transformasi data kita. Data Transformation penting dilakukan supaya data kita bisa melakukan modeling data dengan baik. Berikut merupakan tahap Data Preparation:
-1. Encoding fitur kategori
+1. Encoding fitur kategori(Target Encoding dan Label Encoding)
+2. Train Test Split
+3. Standarisasi(Standarization)
+### Encoding fitur kategori
 
 Pada tahap ini, kita menggunakan 2 metode untuk encoding, yaitu Target Encoder pada kolom `name` dan Label Encoder pada kolom kategori lainnya. Target encoder dipilih pada kolom `name` karena Encoder ini mengurangi dimensionalitas dan mempertahankan hubungan antara fitur kategoris dan variabel target. Terget Encoder membutuhkan kolom y(`selling price`) untuk menghitung rata-rata target per kategori. Proses yang dilakukan yaitu mengubah isi kolom `selling price` terlebih dahulu ke bentuk logaritma nya karena  target dari kolom y memiliki nilai yang cukup besar, sehingga berimbas ke Target Encoding yang tidak efektif. Setelah itu dilakukan proses Target Encoding. Setelah itu, kolom `selling price log` akan dihapus.
 Setelah itu dilakukan proses Label Encoding. Label Encoding dipilih karena lebih efisien dalam memori dan komputasi. Label Encoding dilakukan di kolom kategori selain `name`.  
@@ -229,7 +232,8 @@ car_df['name']= target_encoder.fit_transform(car_df[['name']], car_df['selling_p
 ```sh
 car_df['fuel']= label_encoder.fit_transform(car_df['fuel'])
 ```
-2. Train Test Split
+
+### Train Test Split
 
 Train test split adalah proses membagi data menjadi data latih dan data uji. Pada proses ini, kita membagi data dengan rasio 80:20. Kemudian didapat hasil pembagian data latih dan data uji.
 ```sh
@@ -241,7 +245,7 @@ Hasil dari train test split adalah seperti dibawah
 
 Terlihat bahwa kita mempunyai 4308 data latih dan 1077 data uji.
 
-3. Standarisasi pada kolom numerik
+### Standarisasi pada kolom numerik
 
 Standarisasi fitur numerik memiliki tujuan untuk memastikan bahwa semua fitur berkontribusi secara proporsional terhadap model. Standarisasi dilakukan dengan mengurangkan mean (nilai rata-rata) kemudian membaginya dengan standar deviasi untuk menggeser distribusi. StandardScaler menghasilkan distribusi dengan standar deviasi sama dengan 1 dan mean sama dengan 0. 
 Hasil dari Standarisasi sebagai berikut
@@ -252,6 +256,10 @@ Hasil dari Standarisasi sebagai berikut
 # Modeling
 Modeling adalah tahapan di mana kita menggunakan algoritma machine learning untuk menjawab problem statement dari tahap business understanding. Ada 3 algoritma machine learning yang akan digunakan dalam projek ini, yaitu:
 1. Random Forest Regressor
+2. XGBoost
+3. Gradient Boosting
+
+## Random Forest Regressor
 
 Random Forest merupakan teknik pembelajaran ensemble yang fleksibel dan canggih yang khususnya berguna untuk masalah regresi. Selama fase pelatihan, ia membangun sejumlah besar pohon keputusan dan menghasilkan prediksi rata-rata dari setiap pohon individu. Random Forest merupakan pilihan yang menarik untuk banyak aplikasi dunia nyata karena ia tahan terhadap gangguan dan outlier, mengelola kumpulan data berdimensi tinggi secara efektif, dan menghasilkan estimasi relevansi fitur. Random Forest beroperasi dengan membangun beberapa pohon keputusan selama pelatihan dan menghasilkan prediksi rata-rata (regresi) dari pohon individu. Prinsip yang mendasarinya melibatkan pembuatan serangkaian pohon yang beragam dan menggabungkan prediksi mereka untuk meningkatkan akurasi dan ketahanan secara keseluruhan. Adapun kelebihan dari Random Forest sebagai berikut:
 - Akurasi Tinggi
@@ -272,7 +280,7 @@ berikut kode untuk model Random Forest Regressor
 rf = RandomForestRegressor(n_estimators=100, random_state=123)
 ```
 
-2. XGBoost
+## XGBoost
 
 XGBoost, atau *Extreme Gradient Boosting* adalah algoritma pembelajaran mesin yang populer dan canggih yang termasuk dalam kategori teknik peningkatan gradien. Algoritma ini banyak digunakan untuk tugas klasifikasi dan regresi. XGBoost menyempurnakan pendekatan peningkatan gradien tradisional dengan menggabungkan berbagai teknik pengoptimalan dan regularisasi, sehingga menghasilkan peningkatan akurasi dan efisiensi. XGBoost menggabungkan prediksi beberapa algoritma tradisional, biasanya pohon keputusan, untuk membuat model prediktif yang kuat. Intuisi di balik XGBoost melibatkan pengoptimalan melalui penurunan gradien dan peningkatan. Berikut Kelebihan XGBoost:
 - Akurasi Tinggi
@@ -291,7 +299,7 @@ berikut kode untuk model XGBoost:
 xgb_r = xgb.XGBRegressor(objective ='reg:squarederror', random_state=123)
 ```
 
-3. Gradient Boosting
+## Gradient Boosting
 
 Gradien Boosting adalah teknik pembelajaran mesin yang digunakan untuk tugas regresi dan klasifikasi. Teknik ini membangun model secara berurutan, setiap model mencoba memperbaiki kesalahan model sebelumnya. Tidak seperti algoritme lain yang berfokus pada satu model tunggal, Peningkatan Gradien menggabungkan beberapa model tradisional (biasanya pohon keputusan) untuk membentuk model prediktif yang kuat. Gradient Boosting bekerja dengan inisialisasi model dengan prediksi sederhana terlebih dahulu, lalu hitung residual untuk setiap titik data dengan menemukan perbedaan antara nilai aktual dan prediksi. Setelah itu, pasangkan model tradisional (biasanya pohon keputusan) ke residual ini. Lalu perbarui prediksi dengan menambahkan prediksi model baru, yang diskalakan berdasarkan laju pembelajaran, ke prediksi yang ada. Ulangi langkah 2–4 untuk sejumlah iterasi yang ditetapkan atau hingga residual diminimalkan secara memadai. Berikut kelebihan Gradient Boosting:
 - Akurasi Tinggi
